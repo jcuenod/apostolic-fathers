@@ -1,0 +1,81 @@
+{
+    "tags": [
+        "Part of Speech",
+        "Person",
+        "Number",
+        "Tense",
+        "Mood",
+        "Voice",
+        "Gender",
+        "Case",
+        "Degree"
+    ],
+    "keys": [
+        {
+            "l": "Article",
+            "n": "Noun",
+            "a": "Adjective",
+            "p": "Pronoun",
+            "v": "Verb",
+            "d": "Adverb",
+            "r": "Adposition",
+            "c": "Conjunction",
+            "m": "Numeral",
+            "i": "Interjection",
+            "g": "Particle",
+            "u": "Punctuation",
+            "b": "None of the Above",
+            "k": "I do not know"
+        },
+        {
+            "1": "First",
+            "2": "Second",
+            "3": "Third"
+        },
+        {
+            "s": "Singular",
+            "p": "Plural",
+            "d": "Dual"
+        },
+        {
+            "p": "Present",
+            "i": "Imperfect",
+            "r": "Perfect",
+            "l": "Plusquamperfect",
+            "t": "Future Perfect",
+            "f": "Future",
+            "a": "Aorist"
+        },
+        {
+            "i": "indicative",
+            "s": "subjunctive",
+            "n": "infinitive",
+            "m": "imperative",
+            "p": "participle",
+            "o": "optative"
+        },
+        {
+            "a": "Active",
+            "p": "Passive",
+            "m": "Middle",
+            "e": "Medio-passive"
+        },
+        {
+            "m": "Masculine",
+            "f": "Feminine",
+            "n": "Neuter"
+        },
+        {
+            "n": "Nominative",
+            "g": "Genitive",
+            "d": "Dative",
+            "a": "Accusative",
+            "v": "Vocative"
+        },
+        {
+            "p": "Positive",
+            "c": "Comparative",
+            "s": "Superlative"
+        }
+    ]
+}
