@@ -47,12 +47,12 @@
             "a": "Aorist"
         },
         {
-            "i": "indicative",
-            "s": "subjunctive",
-            "n": "infinitive",
-            "m": "imperative",
-            "p": "participle",
-            "o": "optative"
+            "i": "Indicative",
+            "s": "Subjunctive",
+            "n": "Infinitive",
+            "m": "Imperative",
+            "p": "Participle",
+            "o": "Optative"
         },
         {
             "a": "Active",
