@@ -8,58 +8,6 @@ MORPH = load(open('morphology_tagset.json', 'r'))
 MORPH_TAGS = MORPH["tags"]
 MORPH_VALUES = MORPH["keys"]
 
-# ENGLISH_SECTIONS = {
-#     "010-polycarp-philippians": [10.1
-# 10.2
-# 10.3
-# 11.1
-# 11.2
-# 11.3
-# 11.4
-# 12.1
-# 12.2
-# 12.3
-#         13.1
-#         13.2
-# 14.1]
-
-# "03-shepherd": [
-# 26.30.5
-# 26.31.1
-# 26.31.2
-# 26.31.3
-# 26.31.4
-#     26.31.6
-# 26.32.1
-# 26.32.2
-# 26.32.3
-# 26.32.4
-# 26.32.5
-# 26.33.1
-# 26.33.2
-# 26.33.3
-# 27.0.0
-# 27.1.1
-# 27.1.2
-# 27.1.3
-# 27.2.1
-# 27.2.2
-# 27.2.3
-# 27.2.4
-# 27.3.1
-# 27.3.2
-#         27.3.3
-#         27.3.4
-#         27.3.5
-# 27.4.1
-# 27.4.2
-# 27.4.3
-# 27.4.4
-# 27.4.5
-# ]
-
-# }
-
 
 def parse_morph(morph_code):
     result = {}
@@ -96,7 +44,7 @@ for file in files:
         ))
     print("> Length of Text:", len(text_only))
     print(">", text_only[:100], "...")
-    # tagged_token_array = []
+
     tagged_token_array = tag(text_only)
 
     token_length = 0
@@ -108,18 +56,19 @@ for file in files:
         token_length = len(token)
         morph_code = t[1]
 
-        # Handle punctuation as trailer
+        # Handle punctuation as trailer on previous word
         if morph_code == "u--------" and len(output_rows) > 0:
             output_rows[-1]["trailer"] = token + " "
             continue
 
+        # Get reference based on the cumulative length of the tokens processed thus far
         ref = [x for x in ref_by_char_pos if x[0] > cumulative_length][0][1]
 
         row_data = {}
 
         # Only parse non-Latin words
         # Note, polycarp-phil has "ë" in 10.2
-        #       shepherd has a ":" in 26.31.5, 26.32.4
+        #       shepherd has a ":" in 26.31.5, 26.32.4...
         if re.match('^[a-zA-Zë:]+$', token) is None:
             row_data = parse_morph(morph_code)
 
@@ -127,7 +76,8 @@ for file in files:
         row_data["trailer"] = " "
         row_data["reference"] = ref
 
-        # Shepherd has some Latin that ends with : but is not tokenized separately
+        # ":" is not tokenized separately
+        # (This only occurs in Latin sections of Shepherd)
         if token.endswith(":"):
             row_data["token"] = token[:-1]
             row_data["trailer"] = ": "
